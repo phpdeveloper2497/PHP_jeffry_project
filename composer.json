@@ -1,0 +1,17 @@
+{
+    "name": "bukha/the_second_section",
+    "autoload": {
+        "psr-4": {
+            "Bukha\\TheSecondSection\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/collections": "^10.20"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "
+            "Http\\": "Http/"
+        }
+    }
+}
