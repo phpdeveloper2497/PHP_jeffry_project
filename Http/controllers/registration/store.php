@@ -24,6 +24,7 @@ if(! empty($errors)){
     exit();
 }
 
+/** @var Database $db */
 $db = App::resolve(Database::class);
 // check if the account already exist
 $user = $db->query('SELECT * FROM user where email =:email',[
@@ -35,14 +36,14 @@ if($user) {
     exit();
 }else {
         // If not,  save one to the database, and than log the user in, and redirect.
-        $db->query('INSERT INTO user(email,password) values(:email, :password)',[
+      $id = $db->query('INSERT INTO user(email,password) values(:email, :password)',[
         'email' =>$email,
         'password' => password_hash($password, PASSWORD_BCRYPT
         )
-        ]);
-
+        ])->connection->lastInsertId();
     $_SESSION['user'] = [
         'email' => $email,
+        'user_id'=> $id
     ];
 
     header('location: /');

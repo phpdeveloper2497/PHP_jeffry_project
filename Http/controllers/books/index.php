@@ -13,5 +13,6 @@ view("books/index.view.php",[
     'books' =>$books
 ]);
 
+?>
 
 
